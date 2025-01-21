@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Website</title>
+    <link rel="stylesheet" href="lstyle.css">
+</head>
+<body>
+   
+    <header>
+        <img src="Homepage.jpg" alt="">
+        <a href="http://127.0.0.1:3000/Site.html" rel="home"></a><h1>Lusanda Gutswana</h1>
+        
+    </header>
+    <nav>
+        <a href="#" class="tab-link active" data-tab="home">Home</a>
+        <a href="#" class="tab-link" data-tab="academy">Academy</a>
+        <a href="#" class="tab-link" data-tab="education">Education</a>
+        <a href="#" class="tab-link" data-tab="publications">Publications</a>
+        <a href="#" class="tab-link" data-tab="research">Research</a>
+        <a href="#" class="tab-link" data-tab="students">Students</a>
+        <a href="#" class="tab-link" data-tab="call-for-papers">Call for Papers/Chapters</a>
+        <a href="#" class="tab-link" data-tab="phd-position">PhD Position</a>
+        <a href="#" class="tab-link" data-tab="contact">Contact</a>
+    </nav>
+    <main id="content">
+        <h2>Home Page</h2>
+        <p>Home page about Prof information</p>
+    </main>
+    <footer>
+        <p>Copyright &copy; 2025 Mr. Lusanda Gutswana</p>
+    </footer>
+
+    <script>
+        const content = document.getElementById('content');
+        const tabs = document.querySelectorAll('.tab-link');
+
+        const pages = {
+            home: `
+                <h2>Home Page</h2>
+                <p>Welcome to the home page of our website.</p>
+            `,
+            academy: `
+                <h2>Academy Page</h2>
+                <p>academy page</p>
+            `,
+            education: `
+                <h2>Education Page</h2>
+                <p>educational resources and opportunities.</p>
+            `,
+            publications: `
+                <h2>Publications Page</h2>
+                <p> publications</p>
+            `,
+            research: `
+                <h2>Research Page</h2>
+                <p>research projects and initiatives</p>
+            `,
+            students: `
+                <h2>Students Page</h2>
+                <p>Information of student</p>
+            `,
+            'call-for-papers': `
+                <h2>Call for Papers/Chapters</h2>
+                <p>Submit your papers.</p>
+            `,
+            'phd-position': `
+                <h2>PhD Position Page</h2>
+                <p>PhD positions and opportunities</p>
+            `,
+            contact: `
+                <h2>Contact Page</h2>
+                <p>Contact information for Prof</p>
+            `
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+
+                // Add active class to the clicked tab
+                tab.classList.add('active');
+
+                // Load the content dynamically
+                const tabName = tab.getAttribute('data-tab');
+                content.innerHTML = pages[tabName];
+            });
+        });
+    </script>
+</body>
+</html>
